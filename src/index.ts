@@ -7,6 +7,7 @@ import { addDeckController } from './controllers/addDeckController';
 import { deleteDeckController } from './controllers/deleteDeckController';
 import { addCardToDeckController } from './controllers/addCardToDeckController';
 import { getDeckController } from './controllers/getDeckController';
+import { deleteCardController } from './controllers/deleteCardController';
 
 config();
 
@@ -34,6 +35,9 @@ app.post('/decks/:deckId/cards', addCardToDeckController);
 
 // Get a deck
 app.get('/decks/:deckId', getDeckController);
+
+// Delete a card from deck
+app.delete('/decks/:deckId/cards/:index', deleteCardController);
 
 const db = mongoose.connect(process.env.MONGO_URL!).then(() => {
   console.log(`Listening on port ${PORT}`);
